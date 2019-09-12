@@ -161,7 +161,7 @@ class BertTokenizer(BertTokenizer):
 
 def tokenize_with_metadata(text, tokenizer, max_seq_len):
     # split text into "words" (here: simple whitespace tokenizer)
-    words = text.split(" ")
+    words = str(text).split(" ")
     word_offsets = []
     cumulated = 0
     for idx, word in enumerate(words):

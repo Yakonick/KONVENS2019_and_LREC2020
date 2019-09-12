@@ -22,7 +22,7 @@ DOWNSTREAM_TASK_MAP = {
 }
 
 
-def read_tsv(filename, quotechar='"', delimiter="\t", skiprows=None, columns=None):
+def read_tsv(filename, quotechar='"', delimiter="\t", skiprows=None, columns=None, quoting=3):
     """Reads a tab separated value file. Tries to download the data if filename is not found"""
     if not (os.path.exists(filename)):
         _download_extract_downstream_data(filename)
@@ -33,6 +33,7 @@ def read_tsv(filename, quotechar='"', delimiter="\t", skiprows=None, columns=Non
         quotechar=quotechar,
         names=columns,
         skiprows=skiprows,
+        quoting=quoting,
     )
     if "unused" in df.columns:
         df.drop(columns=["unused"], inplace=True)

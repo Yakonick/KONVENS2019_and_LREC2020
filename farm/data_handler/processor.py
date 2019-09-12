@@ -351,6 +351,73 @@ class GNADProcessor(Processor):
         return features
 
 
+class GermEval19ImplicitProcessor(Processor):
+    # General Processor attributes
+    #label_list = ["IMPLICIT", "EXPLICIT"]
+    #label_list = ["OFFENSE", "OTHER"]
+    label_list = ["ABUSE","PROFANITY","INSULT","OTHER"]
+    metrics = "f1_macro"
+    label_dtype = torch.long
+
+    # Custom Processor attributes
+    delimiter = "\t"
+    skiprows = [0]
+    #columns = ["text", "unused", "unused", "label"]
+    #columns = ["text", "label", "unused"]
+    columns = ["text", "unused", "label"]
+
+    def __init__(
+        self,
+        tokenizer,
+        max_seq_len,
+        data_dir,
+        #train_filename="germeval2019.training_subtask3_normalized.txt",
+        train_filename="germeval2019_training_subtask12_normalized.txt",
+        #train_filename="train2019_normalized_hashtags.tsv",
+        dev_filename=None,
+        test_filename=None,#"test2019.tsv",
+        dev_split=0,#0.2,
+    ):
+
+        super(GermEval19ImplicitProcessor, self).__init__(
+            tokenizer=tokenizer,
+            max_seq_len=max_seq_len,
+            label_list=self.label_list,
+            metrics=self.metrics,
+            train_filename=train_filename,
+            dev_filename=dev_filename,
+            test_filename=test_filename,
+            dev_split=dev_split,
+            data_dir=data_dir,
+            label_dtype=self.label_dtype,
+        )
+
+    def _file_to_dicts(self, file: str) -> dict:
+        dicts = read_tsv(
+            filename=file,
+            delimiter=self.delimiter,
+            skiprows=self.skiprows,
+            columns=self.columns,
+        )
+        return dicts
+
+    def _dict_to_samples(self, dict: dict) -> [Sample]:
+        # this tokenization also stores offsets
+        tokenized = tokenize_with_metadata(
+            dict["text"], self.tokenizer, self.max_seq_len
+        )
+        return [Sample(id=None, clear_text=dict, tokenized=tokenized)]
+
+    def _sample_to_features(self, sample) -> dict:
+        features = sample_to_features_text(
+            sample=sample,
+            label_list=self.label_list,
+            max_seq_len=self.max_seq_len,
+            tokenizer=self.tokenizer,
+        )
+        return features
+
+
 class GermEval18CoarseProcessor(Processor):
     """
     Used to handle the GermEval18 dataset that uses the coase labels
