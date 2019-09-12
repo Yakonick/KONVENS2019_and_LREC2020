@@ -1,12 +1,8 @@
-
-.. image:: https://github.com/deepset-ai/FARM/blob/master/docs/logo_with_name.png?raw=true
-    :width: 383
-    :height: 116
-    :align: left
-    :alt: FARM LOGO
-
-
 (**F**\ ramework for **A**\ dapting **R**\ epresentation **M**\ odels)
+
+.. image:: https://img.shields.io/github/license/deepset-ai/farm
+	:target: https://github.com/deepset-ai/FARM/blob/master/LICENSE
+	:alt: License
 
 What is it?
 ############
