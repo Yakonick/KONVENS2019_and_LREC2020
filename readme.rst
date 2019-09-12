@@ -23,17 +23,14 @@ Recommended::
 Citation
 #############
 If you use our work, please cite our `paper <https://github.com/cgsee1/FARM/edit/germeval2019/risch2019hpidedis.pdf>`_
-**Offensive Language Identification using a German BERT model** as follows:
+**Offensive Language Identification using a German BERT model** as follows::
 
-
-```
-@inproceedings{risch2019hpidedis,
-author = "Risch, Julian and Stoll, Anke and Ziegele, Marc and Krestel, Ralf",
-booktitle = "Proceedings of GermEval (co-located with KONVENS)",
-title = "Offensive Language Identification using a German BERT model",
-year = "2019"
-}
-```
+    @inproceedings{risch2019hpidedis,
+    author = "Risch, Julian and Stoll, Anke and Ziegele, Marc and Krestel, Ralf",
+    booktitle = "Proceedings of GermEval (co-located with KONVENS)",
+    title = "Offensive Language Identification using a German BERT model",
+    year = "2019"
+    }
 
 
 Acknowledgements
