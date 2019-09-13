@@ -1,13 +1,15 @@
 
-.. image:: https://img.shields.io/github/license/deepset-ai/farm
-:target: https://github.com/deepset-ai/FARM/blob/master/LICENSE
+.. image:: https://img.shields.io/github/license/cgsee1/farm
+:target: https://github.com/cgsee1/FARM/blob/germeval2019/LICENSE
 :alt: License
+
 
 Offensive Language Identification using a German BERT model
 #############
 
-This repository contains code that reproduces our submission to the Shared Task on the Identification of Offensive Language in context of the GermEval workshop at the Conference on Natural Language Processing (KONVENS) 2019.
-<https://projects.fzai.h-da.de/iggsa/>
+This repository contains code that reproduces our (Julian Risch, Anke Stoll, Marc Ziegele, Ralf Krestel) submission to the `Shared Task on the Identification of Offensive Language <https://projects.fzai.h-da.de/iggsa/>`_ in context of the GermEval workshop at the Conference on Natural Language Processing (KONVENS) 2019. Please find more details in our `paper <https://github.com/cgsee1/FARM/edit/germeval2019/risch2019hpidedis.pdf>`_
+**Offensive Language Identification using a German BERT model**
+
 
 Installation
 #############
