@@ -372,11 +372,12 @@ class GermEval19ImplicitProcessor(Processor):
         max_seq_len,
         data_dir,
         #train_filename="germeval2019.training_subtask3_normalized.txt",
-        train_filename="germeval2019_training_subtask12_normalized.txt",
+        train_filename="germeval2019.training_subtask1_2.txt",
+        #train_filename="germeval2019_training_subtask12_normalized.txt",
         #train_filename="train2019_normalized_hashtags.tsv",
         dev_filename=None,
-        test_filename=None,#"test2019.tsv",
-        dev_split=0,#0.2,
+        test_filename=None,#"germeval2019_Testdata_Subtask12.txt",
+        dev_split=0.2,
     ):
 
         super(GermEval19ImplicitProcessor, self).__init__(

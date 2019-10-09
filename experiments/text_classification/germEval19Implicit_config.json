@@ -1,7 +1,7 @@
 {
   "general": {
     "cache_dir":  {"value": null, "default": "",                   "desc": "Path for storing pre-trained models downloaded from s3."},
-    "data_dir":   {"value": null, "default": "data/germeval18", "desc": "Input directory for downstream task. Should contain train + test (+ dev) files."},
+    "data_dir":   {"value": null, "default": "data/germeval19", "desc": "Input directory for downstream task. Should contain train + test (+ dev) files."},
     "output_dir": {"value": null, "default": "output",             "desc": "Output directory where model predictions and checkpoints will be saved."},
 
     "cuda":        {"value": null, "default": true,  "desc": "CUDA flag,  uses CUDA if available."},
@@ -19,7 +19,7 @@
     "processor_name":             {"value": null, "default": "GermEval19ImplicitProcessor", "desc": "GermEval19Implicit: binary offensive language detection."},
     "do_eval":          {"value": false, "default": true, "desc": "Whether to run eval on the dev set."},
     "do_train":         {"value": null, "default": true, "desc": "Whether to run training. Can be used to only evaluate on an already trained model."},
-    "dev_size":         {"value": 0, "default": 0.1,  "desc": "Split a dev set from the training set using dev_size as proportion."}
+    "dev_size":         {"value": 0.2, "default": 0.1,  "desc": "Split a dev set from the training set using dev_size as proportion."}
   },
 
   "parameter": {
@@ -41,7 +41,7 @@
   },
 
   "logging": {
-    "eval_every":     {"value": 0,                         "default": 30,   "desc": "Steps per training loop (batches) required for evaluation on dev set. Set to 0 when you do not want to do evaluation on dev set during training."},
+    "eval_every":     {"value": 10,                         "default": 30,   "desc": "Steps per training loop (batches) required for evaluation on dev set. Set to 0 when you do not want to do evaluation on dev set during training."},
     "mlflow_url":     {"value": "https://public-mlflow.deepset.ai/", "default": null, "desc": "Mlflow server for tracking experiments (e.g. http://80.123.45.167:5000/)"},
     "mlflow_nested":  {"value": null,                         "default": true, "desc": "Nesting mlflow experiments. For doing multiple runs across a set of hyperparameters."},
 
