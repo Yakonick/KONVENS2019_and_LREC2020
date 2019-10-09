@@ -17,6 +17,7 @@ Installation
 Recommended::
 
     git clone https://github.com/cgsee1/FARM.git
+    git checkout germeval2019
     cd FARM
     pip install -r requirements.txt
     pip install --editable .
