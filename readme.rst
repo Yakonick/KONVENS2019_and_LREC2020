@@ -1,25 +1,21 @@
 
-.. image:: https://img.shields.io/github/license/cgsee1/farm
-:target: https://github.com/cgsee1/FARM/blob/germeval2019/LICENSE
-:alt: License
+.. image:: https://img.shields.io/github/license/deepset-ai/farm
+	:target: https://github.com/deepset-ai/FARM/blob/master/LICENSE
+	:alt: License
 
 
 Offensive Language Identification using a German BERT model
 #############
+This repository contains code that reproduces our (Julian Risch, Anke Stoll, Marc Ziegele, Ralf Krestel) submission to the [Shared Task on the Identification of Offensive Language](https://projects.fzai.h-da.de/iggsa/) in context of the GermEval workshop at the Conference on Natural Language Processing (KONVENS) 2019. Please find more details in our [paper](https://github.com/cgsee1/FARM/edit/germeval2019/risch2019hpidedis.pdf)
+**Offensive Language Identification using a German BERT model**. 
 
-This repository contains code that reproduces our (Julian Risch, Anke Stoll, Marc Ziegele, Ralf Krestel) submission to the `Shared Task on the Identification of Offensive Language <https://projects.fzai.h-da.de/iggsa/>`_ in context of the GermEval workshop at the Conference on Natural Language Processing (KONVENS) 2019. Please find more details in our `paper <https://github.com/cgsee1/FARM/edit/germeval2019/risch2019hpidedis.pdf>`_
-**Offensive Language Identification using a German BERT model**. The paper won the Shared Task on the Identification of Implicit and Explicit Offensive Language at GermEval2019. The full results of the task can be found `here. <https://projects.fzai.h-da.de/iggsa/wp-content/uploads/2019/10/Auswertung_Abgaben_GermEval_2019_Subtask_3.xlsx>`_
+The paper won the Shared Task on the Identification of Implicit and Explicit Offensive Language at GermEval2019. The full results of the task can be found [here](https://projects.fzai.h-da.de/iggsa/wp-content/uploads/2019/10/Auswertung_Abgaben_GermEval_2019_Subtask_3.xlsx).
 
 
-| Group ID | F1-Score |
-| --- | ---: |
-| hpiDEDIS (this paper) | 73.1% |
-| upb | 70.8% |
-| FoSIL | 69.6% |
-| inriaFBK | 69.5% |
-| HAU | 69.3% |
-| rgcl | 68.9% |
-| fkie | 58.4% |
+| First Header  | Second Header |
+| ------------- | ------------- |
+| Content Cell  | Content Cell  |
+| Content Cell  | Content Cell  |
 
 Installation
 #############
@@ -35,7 +31,7 @@ Recommended::
 
 Citation
 #############
-If you use our work, please cite our `paper <https://github.com/cgsee1/FARM/edit/germeval2019/risch2019hpidedis.pdf>`_
+If you use our work, please cite our [paper](https://github.com/cgsee1/FARM/edit/germeval2019/risch2019hpidedis.pdf)
 **Offensive Language Identification using a German BERT model** as follows::
 
     @inproceedings{risch2019hpidedis,
@@ -52,4 +48,4 @@ If you use our work, please cite our `paper <https://github.com/cgsee1/FARM/edit
 Acknowledgements
 ############
 Thanks to deepset.ai for providing the underlying framework FARM: (**F**\ ramework for **A**\ dapting **R**\ epresentation **M**\ odels)
-See the `full documentation <https://farm.deepset.ai>`_ for more details about FARM
+See the [full documentation](https://farm.deepset.ai) for more details about FARM
