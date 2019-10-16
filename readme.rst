@@ -30,8 +30,11 @@ If you use our work, please cite our `paper <https://github.com/cgsee1/FARM/edit
 
     @inproceedings{risch2019hpidedis,
     author = "Risch, Julian and Stoll, Anke and Ziegele, Marc and Krestel, Ralf",
-    booktitle = "Proceedings of GermEval (co-located with KONVENS)",
-    title = "Offensive Language Identification using a German BERT model",
+    title = "hpiDEDIS at GermEval 2019: Offensive Language Identification using a German BERT model",
+    booktitle = "Proceedings of the 15th Conference on Natural Language Processing (KONVENS)",
+    pages = "403--408",
+    address = "Erlangen, Germany",
+    publisher = "German Society for Computational Linguistics \& Language Technology",
     year = "2019"
     }
 
