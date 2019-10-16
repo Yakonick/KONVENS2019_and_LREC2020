@@ -8,8 +8,18 @@ Offensive Language Identification using a German BERT model
 #############
 
 This repository contains code that reproduces our (Julian Risch, Anke Stoll, Marc Ziegele, Ralf Krestel) submission to the `Shared Task on the Identification of Offensive Language <https://projects.fzai.h-da.de/iggsa/>`_ in context of the GermEval workshop at the Conference on Natural Language Processing (KONVENS) 2019. Please find more details in our `paper <https://github.com/cgsee1/FARM/edit/germeval2019/risch2019hpidedis.pdf>`_
-**Offensive Language Identification using a German BERT model**
+**Offensive Language Identification using a German BERT model**. The paper won the Shared Task on the Identification of Implicit and Explicit Offensive Language at GermEval2019. The full results of the task can be found `here. <https://projects.fzai.h-da.de/iggsa/wp-content/uploads/2019/10/Auswertung_Abgaben_GermEval_2019_Subtask_3.xlsx>`_
 
+
+| Group ID | F1-Score |
+| --- | ---: |
+| hpiDEDIS (this paper) | 73.1% |
+| upb | 70.8% |
+| FoSIL | 69.6% |
+| inriaFBK | 69.5% |
+| HAU | 69.3% |
+| rgcl | 68.9% |
+| fkie | 58.4% |
 
 Installation
 #############
