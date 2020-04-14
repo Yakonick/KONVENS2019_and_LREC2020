@@ -10,7 +10,6 @@ from pathlib import Path
 
 import numpy as np
 from sklearn.preprocessing import StandardScaler
-
 from farm.data_handler.dataset import convert_features_to_dataset
 from farm.data_handler.input_features import (
     samples_to_features_ner,
@@ -375,7 +374,7 @@ class TextClassificationProcessor(Processor):
         test_filename="test.tsv",
         dev_split=0.1,
         delimiter="\t",
-        quote_char="'",
+        quote_char="\"",
         skiprows=None,
         label_column_name="label",
         multilabel=False,

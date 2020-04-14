@@ -52,9 +52,11 @@ def read_tsv(filename, rename_columns, quotechar='"', delimiter="\t", skiprows=N
     if max_samples:
         df = df.sample(max_samples)
 
+    df = df.sample(frac=1.0)# turn off if you want to fix train/dev split
     # let's rename our target columns to the default names FARM expects:
     # "text": contains the text
     # "text_classification_label": contains a label for text classification
+    df = df.rename({'Text': 'text'}, axis='columns')
     columns = ["text"] + list(rename_columns.keys())
     df = df[columns]
     for source_column, label_name in rename_columns.items():

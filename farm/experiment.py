@@ -8,17 +8,22 @@ from farm.modeling.optimization import initialize_optimizer
 from farm.modeling.prediction_head import PredictionHead
 from farm.modeling.tokenization import Tokenizer
 from farm.data_handler.processor import Processor
-from farm.train import Trainer
+from farm.train import Trainer, EarlyStopping
 from farm.utils import set_all_seeds, initialize_device_settings
 from farm.utils import MLFlowLogger as MlLogger
 from farm.file_utils import read_config, unnestConfig
+from farm.infer import Inferencer
+import pandas as pd
+import numpy as np
+from sklearn.metrics import classification_report
 
 logger = logging.getLogger(__name__)
 
 logging.basicConfig(
     format="%(asctime)s - %(levelname)s - %(name)s -   %(message)s",
     datefmt="%m/%d/%Y %H:%M:%S",
-    level=logging.INFO,
+    level=logging.WARNING#ERROR #CRITICAL
+    #level=logging.INFO,
 )
 
 
@@ -62,7 +67,6 @@ def run_experiment(args):
     tokenizer = Tokenizer.load(
         args.parameter.model, do_lower_case=args.parameter.lower_case
     )
-
     processor = Processor.load(
         tokenizer=tokenizer,
         max_seq_len=args.parameter.max_seq_len,
@@ -107,7 +111,14 @@ def run_experiment(args):
         n_epochs=args.parameter.epochs,
         device=device
     )
-
+    # An early stopping instance can be used to save the model that performs best on the dev set
+    # according to some metric and stop training when no improvement is happening for some iterations.
+    earlystopping = EarlyStopping(
+        metric="f1_weighted", mode="max",  # use f1_macro from the dev evaluator of the trainer
+        #metric="loss", mode="min",   # use loss from the dev evaluator of the trainer
+        save_dir=Path("saved_models/bert-trac2020/"),  # where to save the best model
+        patience=2    # number of evaluations to wait for improvement before terminating the training
+    )
     trainer = Trainer(
         model=model,
         optimizer=optimizer,
@@ -120,6 +131,7 @@ def run_experiment(args):
         lr_schedule=lr_schedule,
         evaluate_every=args.logging.eval_every,
         device=device,
+	early_stopping=earlystopping
     )
 
     model = trainer.train()
@@ -129,7 +141,40 @@ def run_experiment(args):
     )
     processor.save(Path(f"{args.general.output_dir}/{model_name}"))
     model.save(Path(f"{args.general.output_dir}/{model_name}"))
-
+    
+    # inference for TRAc2020
+    language = "eng" # eng iben hin
+    option = "" # "_sep_emoji" or ""
+    submission = "_dev" # "_dev" or "_test"
+    
+    df = pd.read_csv("data/trac2020/trac2_"+language+submission+option+".csv")
+    df = df.rename({'Text': 'text'}, axis='columns')
+    df = df.filter(['text'])
+    basic_texts = df.to_dict('records')
+    print("LOADING INFERENCER FROM BEST MODEL DURING TRAINING")
+    model = Inferencer.load(model_name_or_path=earlystopping.save_dir, return_class_probs=True, batch_size=48, gpu=True)
+    result = model.inference_from_dicts(dicts=basic_texts, max_processes=40)
+    print("APPLICATION ON BEST MODEL")
+    result = [x['predictions'] for x in result]
+    probabilities = [x['probability'] for x in [item for sublist in result for item in sublist]]
+    df_probabilities = pd.DataFrame.from_records(probabilities)
+    df_probabilities.to_csv("data/trac2020/trac2_"+language+submission+"_prediction-"+str(model_name)+"-"+str(args.general.seed)+".csv",index=False)
+    
+    # if we make predictions for the development/validation set, we can evaluate the predictions.
+    if submission == "_dev":
+        df_dev = pd.read_csv("data/trac2020/trac2_"+language+"_dev"+option+".csv")
+        df_dev = df_dev.filter(['Sub-task A'])
+        label_to_index = {'NAG':0, 'CAG':1, 'OAG':2}
+        df_dev = df_dev.applymap(lambda x: label_to_index[x])
+        y_true = df_dev.values
+        y_pred = df_probabilities.idxmax(axis = 1, skipna = True)
+        target_names = ['NAG', 'CAG', 'OAG']
+        print(classification_report(y_true, y_pred, target_names=target_names, digits=4))
+    
+        #df_probabilities['group'] = np.arange(len(df_probabilities))
+        #dfs = [df_probabilities, df_probabilities]
+        #final = pd.concat(dfs, ignore_index=True)
+        #print(final.groupby('group').mean())
     ml_logger.end_run()
 
 def get_adaptive_model(
@@ -143,7 +188,7 @@ def get_adaptive_model(
 ):
     parsed_lm_output_types = lm_output_type.split(",")
     language_model = LanguageModel.load(model)
-
+    
     initialized_heads = []
     for head_name in prediction_heads.split(","):
         initialized_heads.append(

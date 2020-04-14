@@ -30,9 +30,8 @@ def acc_and_f1(preds, labels):
     return {"acc": acc, "f1": f1, "acc_and_f1": (acc + f1) / 2}
 
 
-def f1_macro(preds, labels):
-    return {"f1_macro": f1_score(y_true=labels, y_pred=preds, average="macro")}
-
+def f1_weighted(preds, labels):
+    return {"f1_weighted": f1_score(y_true=labels, y_pred=preds, average="weighted")}
 
 def pearson_and_spearman(preds, labels):
     pearson_corr = pearsonr(preds, labels)[0]
@@ -56,8 +55,8 @@ def compute_metrics(metric, preds, labels):
     # TODO this metric seems very specific for NER and doesnt work for
     elif metric == "seq_f1":
         return {"seq_f1": ner_f1_score(labels, preds)}
-    elif metric == "f1_macro":
-        return f1_macro(preds, labels)
+    elif metric == "f1_weighted":
+        return f1_weighted(preds, labels)
     elif metric == "squad":
         return squad(preds, labels)
     elif metric == "mse":

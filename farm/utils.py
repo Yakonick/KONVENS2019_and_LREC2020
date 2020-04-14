@@ -33,9 +33,9 @@ def set_all_seeds(seed, deterministic_cudnn=False):
     """
     random.seed(seed)
     np.random.seed(seed)
-    torch.manual_seed(seed)
+    torch.manual_seed(seed) # 13
     os.environ['PYTHONHASHSEED'] = str(seed)
-    torch.cuda.manual_seed_all(seed)
+    torch.cuda.manual_seed_all(seed) # 13
     if deterministic_cudnn:
         torch.backends.cudnn.deterministic = True
         torch.backends.cudnn.benchmark = False
