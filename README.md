@@ -21,6 +21,11 @@ Recommended:
     pip install -r requirements.txt
     pip install --editable .
 
+If you download the task dataset to ```data/trac2020/trac2_eng_train.csv``` and ```data/trac2020/trac2_eng_dev.csv``` and run the command ```python run_all_experiments.py``` (5 to 10min runtime + time for downloading the pre-trained BERT base model if not in cache) the output should look similar to the following:
+
+    Ensemble size: 1 Run: 1 Weighted macro-average F1-score:  0.7222017651852523,Run: 2 Weighted macro-average F1-score:  0.7084656293593892,
+    Ensemble size: 2 Run: 1 Weighted macro-average F1-score:  0.7371756051970508,Run: 2 Weighted macro-average F1-score:  0.7371756051970508,
+    Ensemble size: 3 Run: 1 Weighted macro-average F1-score:  0.7935370278126409,Run: 2 Weighted macro-average F1-score:  0.7935370278126409,
 
 ## Citation
 
