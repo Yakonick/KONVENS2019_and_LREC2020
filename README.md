@@ -2,7 +2,7 @@
 
 ## Bagging BERT Models for Robust Aggression Identification
 
-This repository contains code that reproduces our submission to the [Shared Tasks on Aggression Identification](https://sites.google.com/view/trac2/shared-task) in context of the TRAC workshop at LREC 2020. Please find more details in our paper [**Bagging BERT Models for Robust Aggression Identification**](https://hpi.de/fileadmin/user_upload/fachgebiete/naumann/people/risch/risch2020bagging.pdf). 
+This repository contains code that reproduces our submission to the [Shared Tasks on Aggression Identification](https://sites.google.com/view/trac2/shared-task) in context of the TRAC workshop at LREC 2020. Please find more details in our paper [**Bagging BERT Models for Robust Aggression Identification**](https://hpi.de/fileadmin/user_upload/fachgebiete/naumann/people/risch/risch2020bagging.pdf). A video that focuses on the ensembling technique is available on [YouTube](https://www.youtube.com/watch?v=W3056xbZmus).
 
 The paper won five out of six subtasks. The following table lists weighted macro-averaged F1-scores for our submission and the best other submission for the three languages English, Hindi, and Bangla and the two tasks A (Aggression Identification), and task B (Misogynistic Aggression Identification).
 
