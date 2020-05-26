@@ -32,13 +32,18 @@ If you download the task dataset to ```data/trac2020/trac2_eng_train.csv``` and 
 If you use our work, please cite our paper [**Bagging BERT Models for Robust Aggression Identification**](https://hpi.de/fileadmin/user_upload/fachgebiete/naumann/people/risch/risch2020bagging.pdf) as follows:
 
     @inproceedings{risch2020bagging,
-    author = {Risch, Julian and Krestel, Ralf},
-    booktitle = {Proceedings of the Workshop on Trolling, Aggression and Cyberbullying (TRAC@LREC)},
-    title = {Bagging BERT Models for Robust Aggression Identification},
-    year = 2020
+    title = "Bagging {BERT} Models for Robust Aggression Identification",
+    author = "Risch, Julian and Krestel, Ralf",
+    booktitle = "Proceedings of the Second Workshop on Trolling, Aggression and Cyberbullying (TRAC@LREC)",
+    month = may,
+    year = "2020",
+    address = "Marseille, France",
+    publisher = "European Language Resources Association (ELRA)",
+    url = "https://www.aclweb.org/anthology/2020.trac-1.9",
+    pages = "55--61",
+    language = "English",
+    ISBN = "979-10-95546-56-6",
     }
-
-
 
 ## Acknowledgements
 
