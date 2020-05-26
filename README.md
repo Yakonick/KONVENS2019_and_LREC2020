@@ -39,10 +39,8 @@ If you use our work, please cite our paper [**Bagging BERT Models for Robust Agg
     year = "2020",
     address = "Marseille, France",
     publisher = "European Language Resources Association (ELRA)",
-    url = "https://www.aclweb.org/anthology/2020.trac-1.9",
     pages = "55--61",
-    language = "English",
-    ISBN = "979-10-95546-56-6",
+    ISBN = "979-10-95546-56-6"
     }
 
 ## Acknowledgements
