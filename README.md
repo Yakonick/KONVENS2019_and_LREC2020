@@ -21,6 +21,7 @@ Recommended:
     pip install -r requirements.txt
     pip install --editable .
 
+The dataset is available under the [under Creative Common Non-Commercial Share-Alike 4.0 licence](https://creativecommons.org/licenses/by-nc-sa/4.0/) and can be obtained [here](https://sites.google.com/view/trac2/shared-task).
 If you download the task dataset to ```data/trac2020/trac2_eng_train.csv``` and ```data/trac2020/trac2_eng_dev.csv``` and run the command ```python run_all_experiments.py``` (5 to 10min runtime + time for downloading the pre-trained BERT base model if not in cache) the output should look similar to the following:
 
     Ensemble size: 1 Run: 1 Weighted macro-average F1-score:  0.7222017651852523,Run: 2 Weighted macro-average F1-score:  0.7084656293593892,
